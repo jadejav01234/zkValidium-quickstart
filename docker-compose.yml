@@ -31,7 +31,7 @@ services:
     environment:
       - ZKEVM_NODE_STATE_DB_HOST=zkevm-state-db
       - ZKEVM_NODE_POOL_DB_HOST=zkevm-pool-db
-      - ZKEVM_NODE_SEQUENCER_SENDER_ADDRESS=0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+      - ZKEVM_NODE_SEQUENCER_SENDER_ADDRESS=0x58E63a242E1bb2162421c8a52c6B3a0F8BC90000
       - ZKEVM_NODE_MTCLIENT_URI=${ZKEVM_NODE_MTCLIENT_URI}
       - ZKEVM_NODE_EXECUTOR_URI=${ZKEVM_NODE_EXECUTOR_URI}
     volumes:
@@ -71,7 +71,7 @@ services:
       - 9093:9091 # needed if metrics enabled
     environment:
       - ZKEVM_NODE_STATE_DB_HOST=zkevm-state-db
-      - ZKEVM_NODE_AGGREGATOR_SENDER_ADDRESS=0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+      - ZKEVM_NODE_AGGREGATOR_SENDER_ADDRESS=0x58E63a242E1bb2162421c8a52c6B3a0F8BC90000
     volumes:
       - ./config/node/config.toml:/app/config.toml
       - ./config/node/genesis.config.json:/app/genesis.json
@@ -142,8 +142,8 @@ services:
     volumes:
       - ./config/node/db_scripts/init_prover_db.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      - POSTGRES_USER=state_user
-      - POSTGRES_PASSWORD=state_password
+      - POSTGRES_USER=runicbuild
+      - POSTGRES_PASSWORD=runicbuild123@
       - POSTGRES_DB=state_db
     command:
       - "postgres"
@@ -162,8 +162,8 @@ services:
     ports:
       - 5433:5432
     environment:
-      - POSTGRES_USER=pool_user
-      - POSTGRES_PASSWORD=pool_password
+      - POSTGRES_USER=runicbuild
+      - POSTGRES_PASSWORD=runicbuild123@
       - POSTGRES_DB=pool_db
     command:
       - "postgres"
@@ -184,8 +184,8 @@ services:
     volumes:
       - ./config/node/db_scripts/init_event_db.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      - POSTGRES_USER=event_user
-      - POSTGRES_PASSWORD=event_password
+      - POSTGRES_USER=runicbuild
+      - POSTGRES_PASSWORD=runicbuild123@
       - POSTGRES_DB=event_db
     command:
       - "postgres"
@@ -206,7 +206,7 @@ services:
       - SUBNETWORK=Local Ethereum
       - ETHEREUM_JSONRPC_HTTP_URL=http://zkevm-mock-l1-network:8545
       - ETHEREUM_JSONRPC_TRACE_URL=http://zkevm-mock-l1-network:8545
-      - DATABASE_URL=postgres://l1_explorer_user:l1_explorer_password@explorer-backend-l1-db:5432/l1_explorer_db
+      - DATABASE_URL=postgres://runicbuild:runicbuild123@@explorer-backend-l1-db:5432/l1_explorer_db
       - SECRET_KEY_BASE=${EXPLORER_L1_SECRET_KEY_BASE}
       - MIX_ENV=prod
       - INDEXER_DISABLE_INTERNAL_TRANSACTIONS_FETCHER=true
@@ -218,8 +218,8 @@ services:
     ports:
       - 5436:5432
     environment:
-      - POSTGRES_USER=l1_explorer_user
-      - POSTGRES_PASSWORD=l1_explorer_password
+      - POSTGRES_USER=runicbuild
+      - POSTGRES_PASSWORD=runicbuild123@
       - POSTGRES_DB=l1_explorer_db
     volumes:
       - explorer_l1_db_data:/var/lib/postgresql/data
@@ -280,8 +280,8 @@ services:
     ports:
       - 8153:8050
     environment:
-      - STATS__DB_URL=postgres://explorer_stats_user:explorer_stats_password@explorer-stats-db-l1:5432/explorer_stats_db
-      - STATS__BLOCKSCOUT_DB_URL=postgresql://l1_explorer_user:l1_explorer_password@explorer-backend-l1-db:5432/l1_explorer_db
+      - STATS__DB_URL=postgres://runicbuild:runicbuild123@@explorer-stats-db-l1:5432/explorer_stats_db
+      - STATS__BLOCKSCOUT_DB_URL=postgresql://runicbuild:runicbuild123@@explorer-backend-l1-db:5432/l1_explorer_db
 
   explorer-proxy-l1:
     depends_on:
@@ -325,7 +325,7 @@ services:
       - SUBNETWORK=Polygon Hermez
       - ETHEREUM_JSONRPC_HTTP_URL=http://zkevm-explorer-json-rpc:8124
       - ETHEREUM_JSONRPC_TRACE_URL=http://zkevm-explorer-json-rpc:8124
-      - DATABASE_URL=postgres://l2_explorer_user:l2_explorer_password@explorer-backend-l2-db:5432/l2_explorer_db
+      - DATABASE_URL=postgres://runicbuild:runicbuild123@@explorer-backend-l2-db:5432/l2_explorer_db
       - SECRET_KEY_BASE=${EXPLORER_L2_SECRET_KEY_BASE}
       - MIX_ENV=prod
       - INDEXER_ZKEVM_BATCHES_ENABLED=true
@@ -357,8 +357,8 @@ services:
     ports:
       - 5437:5432
     environment:
-      - POSTGRES_USER=l2_explorer_user
-      - POSTGRES_PASSWORD=l2_explorer_password
+      - POSTGRES_USER=runicbuild
+      - POSTGRES_PASSWORD=runicbuild123@
       - POSTGRES_DB=l2_explorer_db
     volumes:
       - explorer_l2_db_data:/var/lib/postgresql/data
@@ -373,9 +373,9 @@ services:
     container_name: 'explorer-frontend-l2'
     environment:
       - NEXT_PUBLIC_APP_PORT=3001
-      - NEXT_PUBLIC_NETWORK_NAME=zkEVM
-      - NEXT_PUBLIC_NETWORK_SHORT_NAME=zkEVM
-      - NEXT_PUBLIC_NETWORK_ID=1001
+      - NEXT_PUBLIC_NETWORK_NAME=RunicTestnet
+      - NEXT_PUBLIC_NETWORK_SHORT_NAME=RunicTestnet
+      - NEXT_PUBLIC_NETWORK_ID=822
       - NEXT_PUBLIC_NETWORK_RPC_URL=http://${COMMON_HOST}:8123
       # TODO: should not use the main branch
       - NEXT_PUBLIC_NETWORK_LOGO=https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/network-logos/polygon.svg
@@ -406,8 +406,8 @@ services:
     ports:
       - 8154:8050
     environment:
-      - STATS__DB_URL=postgres://explorer_stats_user:explorer_stats_password@explorer-stats-db-l1:5432/explorer_stats_db
-      - STATS__BLOCKSCOUT_DB_URL=postgresql://l2_explorer_user:l2_explorer_password@explorer-backend-l2-db:5432/l2_explorer_db
+      - STATS__DB_URL=postgres://runicbuild:runicbuild123@@explorer-stats-db-l1:5432/explorer_stats_db
+      - STATS__BLOCKSCOUT_DB_URL=postgresql://runicbuild:runicbuild123@@explorer-backend-l2-db:5432/l2_explorer_db
 
   explorer-proxy-l2:
     depends_on:
@@ -562,9 +562,9 @@ services:
     ports:
       - 5438:5432
     environment:
-      - POSTGRES_USER=test_user
-      - POSTGRES_PASSWORD=test_password
-      - POSTGRES_DB=test_db
+      - POSTGRES_USER=runicbuild
+      - POSTGRES_PASSWORD=runicbuild123@
+      - POSTGRES_DB=runictestnet
     command: ["postgres", "-N", "500"]
 
   # from https://github.com/0xPolygonHermez/zkevm-bridge-service/blob/v0.3.1/docker-compose.yml
@@ -575,9 +575,9 @@ services:
       - 8080:8080
       - 9090:9090
     environment:
-      - ZKEVM_BRIDGE_DATABASE_USER=test_user
-      - ZKEVM_BRIDGE_DATABASE_PASSWORD=test_password
-      - ZKEVM_BRIDGE_DATABASE_NAME=test_db
+      - ZKEVM_BRIDGE_DATABASE_USER=runicbuild
+      - ZKEVM_BRIDGE_DATABASE_PASSWORD=runicbuild123@
+      - ZKEVM_BRIDGE_DATABASE_NAME=runictestnet
       - ZKEVM_BRIDGE_DATABASE_HOST=zkevm-bridge-db
       - ZKEVM_BRIDGE_DATABASE_PORT=5432
     volumes:
@@ -623,7 +623,7 @@ services:
     command:
       - "/bin/sh"
       - "-c"
-      - "/app/zkevm-node approve --network custom --custom-network-file /app/genesis.json --key-store-path /pk/keystore --pw testonly --am 115792089237316195423570985008687907853269984665640564039457584007913129639935 -y --cfg /app/config.toml"
+      - "/app/zkevm-node approve --network custom --custom-network-file /app/genesis.json --key-store-path /pk/keystore --pw runicbuild123@ --am 115792089237316195423570985008687907853269984665640564039457584007913129639935 -y --cfg /app/config.toml"
 
   zkevm-sh:
     container_name: zkevm-sh
@@ -651,8 +651,8 @@ services:
     ports:
       - 5444:5432
     environment:
-      - POSTGRES_USER=committee_user
-      - POSTGRES_PASSWORD=committee_password
+      - POSTGRES_USER=runicbuild
+      - POSTGRES_PASSWORD=runicbuild123@
       - POSTGRES_DB=committee_db
     command:
       - "postgres"

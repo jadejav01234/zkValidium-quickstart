@@ -1,4 +1,4 @@
-PrivateKey = {Path = "/pk/test-member.keystore", Password = "testonly"}
+PrivateKey = {Path = "/pk/test-member.keystore", Password = "runicbuild123@"}
 
 [L1]
 WsURL = "ws://zkevm-mock-l1-network:8546"
@@ -15,8 +15,8 @@ Level = "debug"
 Outputs = ["stderr"]
 
 [DB]
-User = "committee_user"
-Password = "committee_password"
+User = "runicbuild"
+Password = "runicbuild123@"
 Name = "committee_db"
 Host = "zkevm-data-node-db"
 Port = "5432"

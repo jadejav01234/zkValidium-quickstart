@@ -4,9 +4,9 @@ Outputs = ["stdout"]
 
 [SyncDB]
 Database = "postgres"
-User = "test_user"
-Password = "test_password"
-Name = "test_db"
+User = "runicbuild"
+Password = "runicbuild123@"
+Name = "runictestnet"
 Host = "zkevm-bridge-db"
 Port = "5432"
 MaxConns = 20
@@ -14,7 +14,7 @@ MaxConns = 20
 [ClaimTxManager]
 Enabled = true
 FrequencyToMonitorTxs = "1s"
-PrivateKey = {Path = "/pk/keystore.claimtxmanager", Password = "testonly"}
+PrivateKey = {Path = "/pk/keystore.claimtxmanager", Password = "runicbuild123@"}
 RetryInterval = "1s"
 RetryNumber = 10
 AuthorizedClaimMessageAddresses = ["0x90F79bf6EB2c4f870365E785982E1f101E93b906"]
@@ -40,9 +40,9 @@ MaxPageLimit = 100
 BridgeVersion = "v1"
     [BridgeServer.DB]
     Database = "postgres"
-    User = "test_user"
-    Password = "test_password"
-    Name = "test_db"
+    User = "runicbuild"
+    Password = "runicbuild123@"
+    Name = "runictestnet"
     Host = "zkevm-bridge-db"
     Port = "5432"
     MaxConns = 20

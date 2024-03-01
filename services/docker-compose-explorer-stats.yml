@@ -7,8 +7,8 @@ services:
     container_name: 'explorer-stats-postgres'
     command: postgres -c 'max_connections=200'
     environment:
-        POSTGRES_USER: 'explorer_stats_user'
-        POSTGRES_PASSWORD: 'explorer_stats_password'
+        POSTGRES_USER: 'runicbuild'
+        POSTGRES_PASSWORD: 'runicbuild123@'
         POSTGRES_DB: 'explorer_stats_db'
 
   explorer-stats:

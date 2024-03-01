@@ -7,8 +7,8 @@ Outputs = ["stderr"]
 
 [State]
 	[State.DB]
-	User = "state_user"
-	Password = "state_password"
+	User = "runicbuild"
+	Password = "runicbuild123@"
 	Name = "state_db"
 	Host = "zkevm-state-db"
 	Port = "5432"
@@ -48,8 +48,8 @@ GlobalQueue = 1024
 		FinalDeviationPct = 10
 		L2GasPriceSuggesterFactor = 0.5
 	[Pool.DB]
-	User = "pool_user"
-	Password = "pool_password"
+	User = "runicbuild"
+	Password = "runicbuild123@"
 	Name = "pool_db"
 	Host = "zkevm-pool-db"
 	Port = "5432"
@@ -126,8 +126,8 @@ MaxTxLifetime = "3h"
 WaitPeriodSendSequence = "15s"
 LastBatchVirtualizationTimeMaxWaitPeriod = "10s"
 MaxTxSizeForL1 = 131072
-L2Coinbase = "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266"
-PrivateKey = {Path = "/pk/sequencer.keystore", Password = "testonly"}
+L2Coinbase = "0x58E63a242E1bb2162421c8a52c6B3a0F8BC90000"
+PrivateKey = {Path = "/pk/sequencer.keystore", Password = "runicbuild123@"}
 
 [Aggregator]
 Host = "0.0.0.0"
@@ -144,8 +144,8 @@ GeneratingProofCleanupThreshold = "10m"
 [EthTxManager]
 ForcedGas = 0
 PrivateKeys = [
-	{Path = "/pk/sequencer.keystore", Password = "testonly"},
-	{Path = "/pk/aggregator.keystore", Password = "testonly"}
+	{Path = "/pk/sequencer.keystore", Password = "runicbuild123@"},
+	{Path = "/pk/aggregator.keystore", Password = "runicbuild123@"}
 ]
 
 [L2GasPriceSuggester]
@@ -172,8 +172,8 @@ ProfilingEnabled = true
 
 [EventLog]
 	[EventLog.DB]
-	User = "event_user"
-	Password = "event_password"
+	User = "runicbuild"
+	Password = "runicbuild123@"
 	Name = "event_db"
 	Host = "zkevm-event-db"
 	Port = "5432"
@@ -181,8 +181,8 @@ ProfilingEnabled = true
 	MaxConns = 200
 
 [HashDB]
-User = "prover_user"
-Password = "prover_pass"
+User = "runicbuild"
+Password = "runicbuild123@"
 Name = "prover_db"
 Host = "zkevm-state-db"
 Port = "5432"
